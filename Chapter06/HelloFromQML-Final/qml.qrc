@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>VIRTUS.png</file>
+    </qresource>
+</RCC>
