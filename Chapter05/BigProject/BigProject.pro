@@ -17,10 +17,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mocktempsensor.cpp \
+    temperaturesensorif.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    mocktempsensor.h \
+    temperaturesensorif.h
 
 FORMS += \
     mainwindow.ui

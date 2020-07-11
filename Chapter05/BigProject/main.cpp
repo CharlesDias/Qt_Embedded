@@ -1,16 +1,19 @@
 #include "mainwindow.h"
-
 #include <QApplication>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QFont>
+
+#include "mocktempsensor.h"
 
 //#define STM32MP157C_DK2
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+
+    MockTempSensor  mockTemp;
+    MainWindow w(&mockTemp);
 
     QFont font = QApplication::font(&w);;
     font.setPixelSize(font.pointSize() * ADJUST_PIXEL_SIZE_FOR_STM32MP1);

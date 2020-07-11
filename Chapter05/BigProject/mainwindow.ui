@@ -29,7 +29,28 @@
      </font>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>Init ...</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="tempDisplay">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>240</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Init ...</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
