@@ -45,6 +45,10 @@ Window {
                 text: qsTr("")
 
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+
+                onAccepted: {
+                    greetings.text = "Nice to meet you " + nameField.text + "!"
+                }
             }
         }   // End of the RowLayout
 
@@ -52,7 +56,7 @@ Window {
         // text "Enter Name"
         Button {
             id: button
-            text: qsTr("Enter Name")
+            text: qsTr("Enter Name")            
 
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
 
