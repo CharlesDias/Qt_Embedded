@@ -6,7 +6,7 @@
 
 #include "mocktempsensor.h"
 
-//#define STM32MP157C_DK2
+#define STM32MP157C_DK2
 
 int main(int argc, char *argv[])
 {

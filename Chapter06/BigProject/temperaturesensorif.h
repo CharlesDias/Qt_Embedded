@@ -12,6 +12,8 @@ public:
 
 signals:
     void newTemperature(QDateTime timestamp, float degreesCelcius);
+
+public slots:
 };
 
 #endif // TEMPERATURESENSORIF_H

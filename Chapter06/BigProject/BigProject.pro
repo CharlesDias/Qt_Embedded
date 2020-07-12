@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets
 
 CONFIG += c++11
 
@@ -19,17 +19,23 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     mocktempsensor.cpp \
+    temperaturehistoryform.cpp \
     temperaturesensorif.cpp
 
 HEADERS += \
     mainwindow.h \
     mocktempsensor.h \
+    temperaturehistoryform.h \
     temperaturesensorif.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    temperaturehistoryform.ui
 
 # Default rules for deployment.
 INSTALLS += target
 target.path = /usr/bin
+
+RESOURCES += \
+    qml.qrc
 
