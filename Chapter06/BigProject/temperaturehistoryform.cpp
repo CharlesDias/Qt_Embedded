@@ -33,8 +33,13 @@ TemperatureHistoryForm::TemperatureHistoryForm(QWidget *parent) :
 
     ui->tableView->resizeColumnsToContents();
     ui->tableView->resizeRowsToContents();
+    ui->tableView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
 
-    ui->splitter->setSizes({120, 100});
+    // Remove the number of row
+    ui->tableView->verticalHeader()->setVisible(false);
+
+
+    ui->splitter->setSizes({140, 90});
 
     //** setup the QtQuick Chart **
     ui->quickWidget->resize(QSize(800, 480));
@@ -71,6 +76,9 @@ void TemperatureHistoryForm::temperatureUpdate(QDateTime timestamp, float temper
 
     // add the row to the model
     m_tempRecord.appendRow(row);
+
+    // Scrool to bottom
+    ui->tableView->scrollToBottom();
 
     // ** update the m_lastReading **
     double xVal = timestamp.toSecsSinceEpoch() - start_time;

@@ -26,8 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow      *ui;
-    QTimer              m_updateTimer;
-    TemperatureSensorIF *m_tempSensor;
+    QTimer              m_updateTimer;  //< the timer we use for udpates
+    TemperatureSensorIF *m_tempSensor;  //< the temperature sensor we use
 
     void fixPixelSizeToEmbbed();
 };

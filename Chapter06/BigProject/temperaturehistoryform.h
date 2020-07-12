@@ -34,8 +34,8 @@ public slots:
 private:
     Ui::TemperatureHistoryForm *ui;
 
-    QStandardItemModel      m_tempRecord; //< a record of time & temperature
-    QSortFilterProxyModel   m_tempProxy;  //< a way to sort/filter m_tempRecord
+    QStandardItemModel      m_tempRecord;   //< a record of time & temperature
+    QSortFilterProxyModel   m_tempProxy;    //< a way to sort/filter m_tempRecord
 
     QPointF                 m_lastReading;
 };

@@ -8,6 +8,8 @@ MainWindow::MainWindow(TemperatureSensorIF *tempSensor, QWidget *parent)
     , ui(new Ui::MainWindow)
     , m_tempSensor(tempSensor)
 {
+    this->setAttribute(Qt::WA_QuitOnClose);     // quit app when this window closes
+
     ui->setupUi(this);
 
     fixPixelSizeToEmbbed();
@@ -15,10 +17,16 @@ MainWindow::MainWindow(TemperatureSensorIF *tempSensor, QWidget *parent)
     connect(m_tempSensor, &TemperatureSensorIF::newTemperature, this, &MainWindow::updateTempDisplay);
     connect(m_tempSensor, &TemperatureSensorIF::newTemperature, ui->historyForm, &TemperatureHistoryForm::temperatureUpdate);
 
-    connect(&m_updateTimer, &QTimer::timeout, this, &MainWindow::updateDisplay);
     m_updateTimer.setSingleShot(false);
+    connect(&m_updateTimer, &QTimer::timeout, this, &MainWindow::updateDisplay);
     m_updateTimer.setInterval(1000);
     m_updateTimer.start();
+
+    // uncomment these lines to automatically take a screen shot of each tab 2 seconds after the tab is changed
+    //    connect(ui->tabWidget, &QTabWidget::tabBarClicked,
+    //            [this] (int index){
+    //                QTimer::singleShot(2000, [this, index]() {this->grab().save(QString("screenshot_%1.png").arg(index));});
+    //    });
 }
 
 MainWindow::~MainWindow()
@@ -53,4 +61,3 @@ void MainWindow::fixPixelSizeToEmbbed()
     font.setPixelSize(font.pointSize() * ADJUST_PIXEL_SIZE_FOR_STM32MP1);
     ui->tabWidget->setFont(font);
 }
-

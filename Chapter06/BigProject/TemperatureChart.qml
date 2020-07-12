@@ -36,6 +36,11 @@ ChartView {
     Connections {
         target: temperatureData
         onNewReading: {
+
+            console.log("temperatureSeries.count: ", temperatureSeries.count,
+                        "lastReading.x: ", temperatureData.lastReading.x,
+                        "lastReading.y: ", temperatureData.lastReading.y);
+
             if (temperatureSeries.count > 60)
                 temperatureSeries.remove(0);
             temperatureSeries.append(temperatureData.lastReading.x, temperatureData.lastReading.y)
@@ -43,6 +48,11 @@ ChartView {
             // adjust time axis
             timeAxis.min = temperatureSeries.at(0).x
             timeAxis.max = temperatureSeries.at(temperatureSeries.count -1).x
+
+            if (temperatureSeries.count > 60){
+                timeAxis.min = temperatureSeries.at(temperatureSeries.count - 60).x
+                timeAxis.max = temperatureSeries.at(temperatureSeries.count - 1).x
+            }
 
             // adjust temperature axis
             if (temperatureData.lastReading.y < temperatureAxis.min)
