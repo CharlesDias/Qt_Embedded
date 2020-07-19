@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets sql
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick quickwidgets sql scxml virtualkeyboard websockets
 
 CONFIG += c++11
 
@@ -16,21 +16,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    hvaccontroller.cpp \
     main.cpp \
     mainwindow.cpp \
     mocktempsensor.cpp \
     temperaturehistoryform.cpp \
     temperaturereading.cpp \
     temperaturesensorif.cpp \
-    temperaturestorage.cpp
+    temperaturestorage.cpp \
+    wsreporter.cpp
 
 HEADERS += \
+    hvaccontroller.h \
     mainwindow.h \
     mocktempsensor.h \
     temperaturehistoryform.h \
     temperaturereading.h \
     temperaturesensorif.h \
-    temperaturestorage.h
+    temperaturestorage.h \
+    wsreporter.h
 
 FORMS += \
     mainwindow.ui \
@@ -42,4 +46,10 @@ target.path = /usr/bin
 
 RESOURCES += \
     qml.qrc
+
+STATECHARTS += \
+    HVACStateMachine.scxml
+
+DISTFILES += \
+    html/monitor.html
 

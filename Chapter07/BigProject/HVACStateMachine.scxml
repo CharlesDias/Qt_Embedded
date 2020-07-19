@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" version="1.0" binding="early" xmlns:qt="http://www.qt.io/2015/02/scxml-ext" name="HVACStateMachine" qt:editorversion="4.12.3">
+    <state id="FanOff">
+        <qt:editorinfo geometry="-2.05;195.88;50.97;14.26;176.03;194.85" scenegeometry="-2.05;195.88;48.92;210.14;176.03;194.85"/>
+        <state id="Idle">
+            <qt:editorinfo geometry="147;126.51;-60;-50;120;100" scenegeometry="144.95;322.39;84.95;272.39;120;100"/>
+            <transition type="external" event="TooCold" target="Heating">
+                <qt:editorinfo movePoint="18.36;-3.06" startTargetFactors="49.25;7.81" endTargetFactors="7.99;57.03"/>
+            </transition>
+            <transition type="external" event="TooHot" target="Cooling">
+                <qt:editorinfo movePoint="-3.06;38.76" startTargetFactors="53.03;92.20" endTargetFactors="10.99;59.67"/>
+            </transition>
+        </state>
+    </state>
+    <state id="FanOn" initial="Cooling">
+        <qt:editorinfo geometry="457.03;158.14;-126.53;-103.05;355.04;462.16" scenegeometry="457.03;158.14;330.50;55.09;355.04;462.16"/>
+        <state id="Wait">
+            <qt:editorinfo geometry="136.72;158.60;-60;-50;120;100" scenegeometry="593.75;316.74;533.75;266.74;120;100"/>
+            <transition type="external" event="DoneWaiting" target="Idle">
+                <qt:editorinfo movePoint="-78.81;7.19" endTargetFactors="85.06;48.97"/>
+            </transition>
+            <onentry>
+                <send event="DoneWaiting" target="Wait" delay="30"/>
+            </onentry>
+        </state>
+        <state id="Heating">
+            <qt:editorinfo geometry="-32.29;17.34;-60;-50;120;100" scenegeometry="424.74;175.48;364.74;125.48;120;100"/>
+            <transition type="external" event="TargetReached" target="Wait">
+                <qt:editorinfo movePoint="31.85;0" endTargetFactors="24.31;31.26"/>
+            </transition>
+        </state>
+        <state id="Cooling">
+            <qt:editorinfo geometry="-32.29;285.65;-60;-50;120;100" scenegeometry="424.74;443.79;364.74;393.79;120;100"/>
+            <transition type="external" event="TargetReached" target="Wait">
+                <qt:editorinfo movePoint="54.46;27.74" endTargetFactors="19.02;74.66"/>
+            </transition>
+        </state>
+    </state>
+</scxml>
